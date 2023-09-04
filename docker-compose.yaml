@@ -1,0 +1,67 @@
+version: "3.6"
+services:
+
+  traefik:
+    image: "traefik:v2.10"
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  secretify-api:
+    container_name: secretify-api
+    restart: always
+    image: registry.gravitir.io/secretify/secretify-ee-api:v0.8.19
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.secretify-api.rule=Host(`${FQDN}`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.secretify-api.entrypoints=web"
+      - "traefik.http.services.docker-secretify-api.loadbalancer.server.port=8800"
+    environment:
+      DEBUG: "false"
+      # LOG_LEVEL: debug
+      ACTIVITY_ENABLED: "true"
+      UI_URL: ${SCHEME}${FQDN}
+      META_NAME: "Secretify Local"
+      META_ADDRESS: "${SCHEME}${FQDN}"
+      META_EMAIL: "ticket@${FQDN}"
+      STORAGE_ENABLED: "true"
+      STORAGE_FILESYSTEM_ENABLED: "true"
+      STORAGE_ALLOWEDFILEEXTENSIONS: "${STORAGE_ALLOWEDFILEEXTENSIONS}"
+    volumes:
+      - db:/db
+      - files:/_files
+      - ./static:/static
+
+  secretify-ui:
+    container_name: secretify-ui
+    restart: always
+    image: registry.gravitir.io/secretify/secretify-ee-ui:v0.8.19
+    depends_on:
+      - secretify-api
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.secretify-ui.rule=Host(`${FQDN}`)"
+      - "traefik.http.routers.secretify-ui.entrypoints=web"
+      - "traefik.http.services.docker-secretify-ui.loadbalancer.server.port=3000"
+    environment:
+      API_URL: "${SCHEME}${FQDN}/api/v1"
+      UI_URL: "${SCHEME}${FQDN}"
+      BRANDING_PRIMARY_COLOR: "${BRANDING_PRIMARY_COLOR}"
+      BRANDING_LOGO: "${SCHEME}${FQDN}/api/v1/static/${BRANDING_LOGO}"
+      BRANDING_MARKETING: ""
+    extra_hosts:
+      - "${FQDN}:${HOST_IP}"
+
+volumes:
+  db:
+  files:
