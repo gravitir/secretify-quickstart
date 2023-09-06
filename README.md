@@ -117,8 +117,16 @@ Open a browser and navigate to http://secretify.localhost
 
 Now you can customize various configuration parameters by editing the `.env` file. For example, you can change the primary branding color by editing `BRANDING_PRIMARY_COLOR="#EA2027"`. After making changes, restart Secretify using again:
 
+For the local variant:
+
 ```
 docker-compose up -d
+```
+
+For the secure variant:
+
+```
+docker-compose up -f docker-compose.secure.yaml -d
 ```
 
 You should see the changes reflected in the Secretify interface.
