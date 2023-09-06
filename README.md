@@ -126,7 +126,7 @@ docker-compose up -d
 For the secure variant:
 
 ```
-docker-compose up -f docker-compose.secure.yaml -d
+docker-compose -f docker-compose.secure.yaml up -d
 ```
 
 You should see the changes reflected in the Secretify interface.
