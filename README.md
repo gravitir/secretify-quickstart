@@ -8,7 +8,7 @@ A secure way to transfer or share secrets.
 
 In this unit you will learn how to install Secretify using Docker.
 
-At the end of this section, you will have a working Secretify instance behind a reverse proxy.
+At the end of this section, you will have a working Secretify instance behind a reverse proxy. The reverse proxy used in this guide is [traefik](https://traefik.io/), but any other preferable option woudl work fine.
 
 ## Prerequisite
 
@@ -24,7 +24,9 @@ git clone https://github.com/gravitir/secretify-quickstart.git
 
 ## Installation
 
-This step-by-step installation guide is intended for testing and development purposes and should not be used in a production environment. Please note that it includes a reverse proxy (Traefik) configuration that is only exposed via Port 80 (HTTP). If you intend to expose the application via HTTPS, configure Traefik accordingly, or utilize your own reverse proxy for custom configuration.
+This step-by-step installation guide is intended for testing and development purposes and should not be used in a production environment.
+
+If you're using Docker in a local environment, you can proceed with the intended guide. However, if you plan to expose your Secretify instance publicly, follow the secure variant as Secretify requires HTTPS for proper functionality in a public setting.
 
 ### Step 1: Login to the Private Docker Registry
 
@@ -71,12 +73,24 @@ Next, add a DNS record for your `FQDN` (e.g. `secretify.localhost`) in your DNS 
 
 > **_NOTE:_**   Ensure that you do not use a loopback address (e.g., 127.0.0.1) for the `HOST_IP` in the `.env` file. This is because the API instance needs to reach the UI, and using a loopback address would prevent proper communication.
 
+### Step 3b: Additonal Configuration for Secure Variant
+
+Set the `SCHEME` to `https://` in the `.env` file. Additionally, make sure to define a valid email address in `POSTMASTER_EMAIL` which used by traefik for issuing Let's Encrypt certificates.
+
 ### Step 5: Start the Secretify Instance
 
-Start the Secretify instance:
+To start the Secretify instance, use one of the following commands depending on your chosen variant:
+
+For the local variant:
 
 ```
 docker-compose up -d
+```
+
+For the secure variant:
+
+```
+docker-compose up -f docker-compose.secure.yaml -d
 ```
 
 When Secretify starts, the terminal will return the following:  
