@@ -140,9 +140,9 @@ You should see the changes reflected in the Secretify interface.
 
 #### Editing Content Files
 
-There are two content files you can adjust for your instance.
+There are two content files you can edit.
 
-| Name    | Content file path           | RI path    |
+| Name    | Content file path           | URI path   |
 | ------- | --------------------------- | ---------- |
 | Imprint | `static/content/imprint.md` | `/imprint` |
 | Privacy | `static/content/privacy.md` | `/privacy` |
@@ -154,7 +154,7 @@ Before configuring Microsoftonline Authentication, you need to create an app reg
 
 | Env                                     | Value                                                                           | Description                                                                                                                                                                                                                                 |
 | --------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AUTH_ENABLED`                          | `true`                                                                          | Set to `true` to enable authentication.                                                                                                                                                                                                     |
+| `AUTH_ENABLED`<br><br>Example value: `true` | `true`                                                                          | Set to `true` to enable authentication.                                                                                                                                                                                                     |
 | `AUTH_STRICT`                           | `true`                                                                          | Set to `true` if you want to enforce authentication for creating secrets (revealing secrets will still be publicly available).                                                                                                              |
 | `AUTH_SESSIONSECRET`                    | `YOUR_SESSIONSECRET`                                                            | Do not set this in the `.env` file since it is a secret. Set it from the terminal using: `export AUTH_SESSIONSECRET=YOUR_SESSIONSECRET`. You should generate the secret only once (e.g. `openssl rand -base64 32`) and reuse it afterwards. |
 | `AUTH_MICROSOFTONLINE_ENABLED`          | `true`                                                                          | Set to `true`   to enable Microsoft Online Authentication.                                                                                                                                                                                  |
