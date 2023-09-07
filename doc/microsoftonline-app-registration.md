@@ -4,7 +4,7 @@
 
 In this guide, you will learn how to register a new app in Entra (formerly Azure AD) to use OAuth 2.0 with Secretify.
 
-## Prerequisite
+## Prerequisites
 
 Before you begin, make sure you have the following:
 
@@ -13,7 +13,7 @@ Before you begin, make sure you have the following:
 
 ## Setup
 
-> **_NOTE:_**   For ease of readability, we will use the URL `https://example.secretify.io` as the configured instance in this guide. Replace it with the actual URL of your running instance (e.g. `https://secretify.example.com`).
+> **_NOTE:_**   For ease of readability, we will use the URL `https://example.secretify.io` as a placeholder. Replace it with the actual URL of your running instance (e.g. `https://secretify.example.com`).
 
 ### Step 1: Create a New App Registration
 

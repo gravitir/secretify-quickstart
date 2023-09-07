@@ -10,7 +10,7 @@ In this unit you will learn how to install Secretify using Docker.
 
 At the end of this section, you will have a working Secretify instance behind a reverse proxy. The reverse proxy used in this guide is [traefik](https://traefik.io/), but any other preferable option woudl work fine.
 
-## Prerequisite
+## Prerequisites
 
 Before you begin, make sure you have the following tools installed:
 
@@ -167,14 +167,13 @@ Before configuring Microsoftonline Authentication, you need to create an app reg
 
 ### Outlook Plugin Configuration
 
+Before install the Secretify Outlook Plugin, you need to adjust your configuration. After that, follow the instructions in the [Secretify Outlook Plugin Setup Guide](./doc/secretify-outlook-plugin.md).
 
-Before install the Secretify Outlook Plugin you need to adjust your configuration, after that follow this guide [Secretify Outlook Plugin](./doc/secretify-outlook-plugin.md).
-
-| Env                         | Description                                                                                                                                                   |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PLUGIN_OUTLOOK_ENABLED`    | Set to `true` to enable the outlook plugin.                                                                                                                   |
-| `PLUGIN_OUTLOOK_APPID`      | You should generate the app id only once (e.g. `uuidgen`) and reuse it afterwards. It has to be a guid in the form of `f825c0bf-76eb-4e0c-8038-b46003c9d9ca`. |
-| `PLUGIN_OUTLOOK_APPVERSION` | Set to `1.0.0.0`.                                                                                                                                             |
+| Env                         | Description                                                                                                                                                                      |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PLUGIN_OUTLOOK_ENABLED`    | Set to `true` to enable the Outlook plugin.                                                                                                                                      |
+| `PLUGIN_OUTLOOK_APPID`      | Generate this app ID only once (e.g., using `uuidgen` or any other GUID generator tool) and reuse it. It needs to be a GUID in the form of `f825c0bf-76eb-4e0c-8038-b46003c9d9ca`. |
+| `PLUGIN_OUTLOOK_APPVERSION` | Set to `1.0.0.0`.                                                                                                                                                                |
 
 ### Mail STMP configuration
 
