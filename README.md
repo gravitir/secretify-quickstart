@@ -149,7 +149,6 @@ There are two content files you can edit.
 
 ### Authentication Microsoftonline Configuration
 
-
 Before configuring Microsoftonline Authentication, you need to create an app registration in your Azure Tenant. Follow this guide [Microsoftonline App Registration Guide](./doc/microsoftonline-app-registration.md).
 
 | Env                                     | Description                                                                                                                                                                                                                                               |
@@ -166,10 +165,16 @@ Before configuring Microsoftonline Authentication, you need to create an app reg
 | `AUTH_MICROSOFTONLINE_APPLICATIONID`    | Obtain from your app registration under `Overview` > `Application (client) ID`.<br><br>e.g. `d2254856-cdd5-4c48-be5e-4edc2aff353a`                                                                                                                        |
 | `AUTH_MICROSOFTONLINE_APPLICATIONIDURI` | Obtain from your app registration under `Expose an API` > `Application ID URI`<br><br>e.g. `api://secretify.localhost/d2254856-cdd5-4c48-be5e-4edc2aff353a`                                                                                               |
 
+### Outlook Plugin Configuration
 
-### Outlook Plugin configuration
 
-*coming soon..*
+Before install the Secretify Outlook Plugin you need to adjust your configuration, after that follow this guide [Secretify Outlook Plugin](./doc/secretify-outlook-plugin.md).
+
+| Env                         | Description                                                                                                                                                   |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PLUGIN_OUTLOOK_ENABLED`    | Set to `true` to enable the outlook plugin.                                                                                                                   |
+| `PLUGIN_OUTLOOK_APPID`      | You should generate the app id only once (e.g. `uuidgen`) and reuse it afterwards. It has to be a guid in the form of `f825c0bf-76eb-4e0c-8038-b46003c9d9ca`. |
+| `PLUGIN_OUTLOOK_APPVERSION` | Set to `1.0.0.0`.                                                                                                                                             |
 
 ### Mail STMP configuration
 
