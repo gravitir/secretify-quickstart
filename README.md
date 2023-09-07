@@ -131,11 +131,43 @@ docker-compose -f docker-compose.secure.yaml up -d
 
 You should see the changes reflected in the Secretify interface.
 
-### Branding configuration
+### Branding Configuration
 
-*coming soon..*
+| Env                      | Value      | Description                                           |
+| ------------------------ | ---------- | ----------------------------------------------------- |
+| `BRANDING_PRIMARY_COLOR` | `#079992`  | Primary color                                         |
+| `BRANDING_LOGO`          | `logo.png` | Relative path to the logo file in the `static` folder |
 
-### Authentication Microsoftonline configuration
+#### Editing Content Files
+
+There are two content files you can adjust for your instance.
+
+| Name    | Content file path           | RI path    |
+| ------- | --------------------------- | ---------- |
+| Imprint | `static/content/imprint.md` | `/imprint` |
+| Privacy | `static/content/privacy.md` | `/privacy` |
+
+### Authentication Microsoftonline Configuration
+
+
+Before configuring Microsoftonline Authentication, you need to create an app registration in your Azure Tenant. Follow this guide [Microsoftonline App Registration Guide](./doc/microsoftonline-app-registration.md).
+
+| Env                                     | Value                                                                           | Description                                                                                                                                                                                                                                 |
+| --------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AUTH_ENABLED`                          | `true`                                                                          | Set to `true` to enable authentication.                                                                                                                                                                                                     |
+| `AUTH_STRICT`                           | `true`                                                                          | Set to `true` if you want to enforce authentication for creating secrets (revealing secrets will still be publicly available).                                                                                                              |
+| `AUTH_SESSIONSECRET`                    | `YOUR_SESSIONSECRET`                                                            | Do not set this in the `.env` file since it is a secret. Set it from the terminal using: `export AUTH_SESSIONSECRET=YOUR_SESSIONSECRET`. You should generate the secret only once (e.g. `openssl rand -base64 32`) and reuse it afterwards. |
+| `AUTH_MICROSOFTONLINE_ENABLED`          | `true`                                                                          | Set to `true`   to enable Microsoft Online Authentication.                                                                                                                                                                                  |
+| `AUTH_MICROSOFTONLINE_SCOPES`           | `api://secretify.localhost/d2254856-cdd5-4c48-be5e-4edc2aff353a/access_as_user` | Obtain from your app registration under `Expose an API` > `Scopes`.                                                                                                                                                                         |
+| `AUTH_MICROSOFTONLINE_CLIENTID`         | `d2254856-cdd5-4c48-be5e-4edc2aff353a`                                          | Obtain from your app registration under `Overview` > `Application (client) ID`.                                                                                                                                                             |
+| `AUTH_MICROSOFTONLINE_CLIENTSECRET`     | `YOUR_CLIENTSECRET`                                                             | Do not set this in the `.env` file since it is a secret. You should have copied the client secret value when you created it. Set it from the terminal using: `export AUTH_MICROSOFTONLINE_CLIENTSECRET=YOUR_CLIENTSECRET`.                  |
+| `AUTH_MICROSOFTONLINE_TENANT`           | `c32fa489-fff8-4d11-a1a9-ab50112c3be8`                                          | Obtain from your app registration under `Overview` > `Directory (tenant) ID`                                                                                                                                                                |
+| `AUTH_MICROSOFTONLINE_REDIRECTURL`      | `http://secretify.localhost/callback`                                           | Obtain from your app registration under `Authentication` > `Platform configurations` > `Web - Redirect URIs`                                                                                                                                |
+| `AUTH_MICROSOFTONLINE_APPLICATIONID`    | `d2254856-cdd5-4c48-be5e-4edc2aff353a`                                          | Obtain from your app registration under `Overview` > `Application (client) ID`                                                                                                                                                              |
+| `AUTH_MICROSOFTONLINE_APPLICATIONIDURI` | `api://secretify.localhost/d2254856-cdd5-4c48-be5e-4edc2aff353a`                | Obtain from your app registration under `Expose an API` > `Application ID URI`                                                                                                                                                              |
+
+
+### Outlook Plugin configuration
 
 *coming soon..*
 
@@ -144,10 +176,6 @@ You should see the changes reflected in the Secretify interface.
 *coming soon..*
 
 ### Storage configuration
-
-*coming soon..*
-
-### Outlook Plugin configuration
 
 *coming soon..*
 
