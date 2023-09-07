@@ -4,6 +4,7 @@ services:
   traefik:
     image: "traefik:v2.10"
     container_name: "traefik"
+    network_mode: bridge # bad design, fixme sometime
     command:
       #- "--log.level=DEBUG"
       - "--api.insecure=true"
@@ -18,6 +19,7 @@ services:
 
   secretify-api:
     container_name: secretify-api
+    network_mode: bridge # bad design, fixme sometime
     restart: always
     image: registry.gravitir.io/secretify/secretify-ee-api:v0.8.19
     labels:
@@ -27,7 +29,7 @@ services:
       - "traefik.http.services.docker-secretify-api.loadbalancer.server.port=8800"
     environment:
       DEBUG: "false"
-      # LOG_LEVEL: debug
+      LOG_LEVEL: ${LOG_LEVEL}
       ACTIVITY_ENABLED: "true"
       UI_URL: ${SCHEME}${FQDN}
       META_NAME: "Secretify Local"
@@ -54,6 +56,7 @@ services:
 
   secretify-ui:
     container_name: secretify-ui
+    network_mode: bridge # bad design, fixme sometime
     restart: always
     image: registry.gravitir.io/secretify/secretify-ee-ui:v0.8.19
     depends_on:
@@ -69,7 +72,7 @@ services:
       UI_URL: "${SCHEME}${FQDN}"
       BRANDING_PRIMARY_COLOR: "${BRANDING_PRIMARY_COLOR}"
       BRANDING_LOGO: "${SCHEME}${FQDN}/api/v1/static/${BRANDING_LOGO}"
-      BRANDING_MARKETING: ""
+      BRANDING_MARKETING: ${BRANDING_MARKETING}
     extra_hosts:
       - "${FQDN}:${HOST_IP}"
 
