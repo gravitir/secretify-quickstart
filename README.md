@@ -149,6 +149,8 @@ There are two content files you can edit.
 
 ### Authentication Microsoftonline Configuration
 
+> **_NOTE:_**   The default (insecure via HTTP) variant works only if you use `localhost` as your FQDN instead of `secretify.localhost` in some of the examples.
+
 Before configuring Microsoftonline Authentication, you need to create an app registration in your Azure Tenant. Follow this guide [Microsoftonline App Registration Guide](./doc/microsoftonline-app-registration.md).
 
 | Env                                     | Description                                                                                                                                                                                                                                               |
@@ -165,7 +167,7 @@ Before configuring Microsoftonline Authentication, you need to create an app reg
 | `AUTH_MICROSOFTONLINE_APPLICATIONID`    | Obtain from your app registration under `Overview` > `Application (client) ID`.<br><br>e.g. `d2254856-cdd5-4c48-be5e-4edc2aff353a`                                                                                                                        |
 | `AUTH_MICROSOFTONLINE_APPLICATIONIDURI` | Obtain from your app registration under `Expose an API` > `Application ID URI`<br><br>e.g. `api://secretify.localhost/d2254856-cdd5-4c48-be5e-4edc2aff353a`                                                                                               |
 
-### Outlook Plugin Configuration
+### Outlook Plugin Configuration (only supported with secure variant)
 
 Before install the Secretify Outlook Plugin, you need to adjust your configuration. After that, follow the instructions in the [Secretify Outlook Plugin Setup Guide](./doc/secretify-outlook-plugin.md).
 
