@@ -76,6 +76,7 @@ services:
       - "traefik.http.services.docker-secretify-ui.loadbalancer.server.port=3000"
     environment:
       API_URL: "${SCHEME}${FQDN}/api/v1"
+      LOCAL_API_URL: "${SCHEME}${FQDN}/api/v1"
       UI_URL: "${SCHEME}${FQDN}"
       BRANDING_PRIMARY_COLOR: "${BRANDING_PRIMARY_COLOR}"
       BRANDING_LOGO: "${SCHEME}${FQDN}/api/v1/static/${BRANDING_LOGO}"
