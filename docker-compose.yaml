@@ -56,6 +56,7 @@ services:
       - db:/db
       - files:/_files
       - ./static:/static
+      - ./config:/config
 
   secretify-ui:
     container_name: secretify-ui
