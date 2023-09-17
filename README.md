@@ -135,6 +135,7 @@ You should see the changes reflected in the Secretify interface.
 
 | Env                      | Value      | Description                                           |
 | ------------------------ | ---------- | ----------------------------------------------------- |
+| `BRANDING_SERIOUS`       | `false`    | Enable or disable serious branding mode               |
 | `BRANDING_PRIMARY_COLOR` | `#079992`  | Primary color                                         |
 | `BRANDING_LOGO`          | `logo.png` | Relative path to the logo file in the `static` folder |
 
@@ -157,6 +158,7 @@ Before configuring Microsoftonline Authentication, you need to create an app reg
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `AUTH_ENABLED`                          | Set to `true` to enable authentication.                                                                                                                                                                                                                   |
 | `AUTH_STRICT`                           | Set to `true` if you want to enforce authentication for creating secrets (revealing secrets will still be publicly available).                                                                                                                            |
+| `AUTH_RANDOM_GUESTNAME`                 | Set to `true` if you want to enable random guest names. This flag is only being used if authentication is enabled.                                                                                                                                        |
 | `AUTH_SESSIONSECRET`                    | Do not set this in the `.env` file since it is a secret.<br><br>Set it from the terminal using: `export AUTH_SESSIONSECRET=YOUR_SESSIONSECRET`.<br><br>You should generate the secret only once (e.g. `openssl rand -base64 32`) and reuse it afterwards. |
 | `AUTH_MICROSOFTONLINE_ENABLED`          | Set to `true`   to enable Microsoft Online Authentication.                                                                                                                                                                                                |
 | `AUTH_MICROSOFTONLINE_SCOPES`           | Obtain from your app registration under `Expose an API` > `Scopes`.<br><br>e.g. `api://secretify.localhost/d2254856-cdd5-4c48-be5e-4edc2aff353a/access_as_user`                                                                                           |
@@ -171,19 +173,94 @@ Before configuring Microsoftonline Authentication, you need to create an app reg
 
 Before install the Secretify Outlook Plugin, you need to adjust your configuration. After that, follow the instructions in the [Secretify Outlook Plugin Setup Guide](./doc/secretify-outlook-plugin.md).
 
-| Env                         | Description                                                                                                                                                                      |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PLUGIN_OUTLOOK_ENABLED`    | Set to `true` to enable the Outlook plugin.                                                                                                                                      |
+| Env                         | Description                                                                                                                                                                        |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PLUGIN_OUTLOOK_ENABLED`    | Set to `true` to enable the Outlook plugin.                                                                                                                                        |
 | `PLUGIN_OUTLOOK_APPID`      | Generate this app ID only once (e.g., using `uuidgen` or any other GUID generator tool) and reuse it. It needs to be a GUID in the form of `f825c0bf-76eb-4e0c-8038-b46003c9d9ca`. |
-| `PLUGIN_OUTLOOK_APPVERSION` | Set to `1.0.0.0`.                                                                                                                                                                |
+| `PLUGIN_OUTLOOK_APPVERSION` | Set to `1.0.0.0`.                                                                                                                                                                  |
 
-### Mail STMP configuration
-
-*coming soon..*
 
 ### Storage configuration
 
-*coming soon..*
+Currently, only the filesystem storage option is supported.
+
+| Env                             | Description                                                                                                           |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `STORAGE_ENABLED`               | Set to `true` to enable storage.                                                                                      |
+| `STORAGE_FILESYSTEM_ENABLED`    | Set to `true` to enable filesystem storage.                                                                           |
+| `STORAGE_SPACELEFT_HEALTHCHECK` | Set to `true` to enable space left healthcheck.                                                                       |
+| `STORAGE_SPACELEFT_THRESHOLD`   | Set to a byte value (e.g. `1073741824` for 1GB). If there is less than 1GB space left, file uploads will be disabled. |
+
+### Mail STMP configuration
+
+Below are the configuration options for SMTP email settings:
+
+| Env                  | Description                                                                                                           |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `MAIL_ENABLED`       | Set to `true` to enable email functionality.                                                                          |
+| `MAIL_SMTP_FROM`     | Specify the email address from which emails will be sent.                                                             |
+| `MAIL_SMTP_USERNAME` | Enter the SMTP username for authentication (if required).                                                             |
+| `MAIL_SMTP_PASSWORD` | Set the SMTP password. You can set it from the terminal using the command: `export MAIL_SMTP_PASSWORD=YOUR_PASSWORD`. |
+| `MAIL_SMTP_HOST`     | Specify the SMTP server host address or hostname.                                                                     |
+| `MAIL_SMTP_PORT`     | Specify the SMTP server port number.                                                                                  |
+
+### Additional Configuration via `config/secretify.yaml`
+
+You can customize your own secret types by editing the `config.secretify.yaml` file. Below is an example of how to add a secret type for certificates:
+
+```yaml
+types:
+# ...
+# other types
+# ...
+- active: true
+    identifier: certificate
+    name:
+      en: Certificate
+    description:
+      en: This secret type allows you to securely upload certificates and private keys with optional details.
+    schema:
+      - property: certificate
+        type: file
+        required: true
+        maxFilesize: 4096000 # in bytes
+        allowedFileExtensions:
+          - .crt
+      - property: privatekey
+        type: file
+        required: true
+        maxFilesize: 4096000 # in bytes
+        allowedFileExtensions:
+          - .key
+      - property: details
+        type: string
+        required: false
+        secretMaxLength: 200
+    uiSetting:
+      order: 3
+      secretRevealDuration: "120s"
+      secretExpiresInOptions: # valid are s (seconds), m (minutes) and h (hours)
+        - "5m"
+        - "1h"
+        - "24h"
+        - "168h"
+      displayName:
+        certificate:
+          en: Certificate
+        privatekey:
+          en: Private Key
+        details:
+          en: Details
+      description:
+        details:
+          en: Add an optional message related to the uploaded certificate and private key.
+      placeholder:
+        details:
+          en: Details to go along with the certificate and private key
+    policy:
+      defaultSecretMaxLength: 500
+
+```
 
 ## Acknowledgments
 
