@@ -264,6 +264,20 @@ You can customize your own secret types by editing the `config.secretify.yaml` f
 
 ```
 
+## Troubleshooting
+
+Start by checking if the containers are starting successfully.
+
+```bash
+docker ps
+```
+
+If they are, proceed to examine the Docker logs, as you may find error messages that can provide insights into any issues.
+
+```bash
+docker logs secretify-api
+```
+
 ## Acknowledgments
 
 Our thanks are extended but not limited to the following people or organizations:
