@@ -90,7 +90,7 @@ docker-compose up -d
 For the secure variant:
 
 ```
-docker-compose up -f docker-compose.secure.yaml -d
+docker-compose -f docker-compose.secure.yaml up -d
 ```
 
 When Secretify starts, the terminal will return the following:  
