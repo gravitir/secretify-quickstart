@@ -131,6 +131,8 @@ docker-compose -f docker-compose.secure.yaml up -d
 
 You should see the changes reflected in the Secretify interface.
 
+> **_NOTE:_**   If you have made changes to `config/secretiy.yaml` and want to see your changes take effect, you need to run `docker restart secretify-api` instead.
+
 ### Branding Configuration
 
 | Env                      | Value      | Description                                           |
@@ -206,14 +208,14 @@ Below are the configuration options for SMTP email settings:
 
 ### Additional Configuration via `config/secretify.yaml`
 
-You can customize your own secret types by editing the `config.secretify.yaml` file. Below is an example of how to add a secret type for certificates:
+You can customize your own secret types by editing the `config.secretify.yaml` file. Below is an example of how to add a secret type for certificates (you need to run `docker restart secretify-api` to see your changes take effect):
 
 ```yaml
-types:
+# types:
 # ...
 # other types
 # ...
-- active: true
+  - active: true
     identifier: certificate
     name:
       en: Certificate
