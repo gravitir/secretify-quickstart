@@ -8,7 +8,7 @@ A secure way to transfer or share secrets.
 
 In this unit you will learn how to install Secretify using Docker.
 
-At the end of this section, you will have a working Secretify instance behind a reverse proxy. The reverse proxy used in this guide is [traefik](https://traefik.io/), but any other preferable option woudl work fine.
+At the end of this section, you will have a working Secretify instance behind a reverse proxy. The reverse proxy used in this guide is [traefik](https://traefik.io/), but any other preferable option would work fine.
 
 ## Prerequisites
 
