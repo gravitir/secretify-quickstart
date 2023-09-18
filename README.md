@@ -206,6 +206,11 @@ Below are the configuration options for SMTP email settings:
 | `MAIL_SMTP_HOST`     | Specify the SMTP server host address or hostname.                                                                     |
 | `MAIL_SMTP_PORT`     | Specify the SMTP server port number.                                                                                  |
 
+#### Microsoft 365 SMTP configuration
+
+To configure outgoing SMTP for secretify as application in Microsoft 365 see the following manual:
+[How to set up a multifunction device or application to send email using Microsoft 365 or Office 365](https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
+
 ### Additional Configuration via `config/secretify.yaml`
 
 You can customize your own secret types by editing the `config.secretify.yaml` file. Below is an example of how to add a secret type for certificates (you need to run `docker restart secretify-api` to see your changes take effect):
