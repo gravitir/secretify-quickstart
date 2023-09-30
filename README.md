@@ -141,14 +141,27 @@ You should see the changes reflected in the Secretify interface.
 | `BRANDING_PRIMARY_COLOR` | `#079992`  | Primary color                                         |
 | `BRANDING_LOGO`          | `logo.png` | Relative path to the logo file in the `static` folder |
 
+### Help Configuration
+
+| Env            | Value   | Description                 |
+| -------------- | ------- | --------------------------- |
+| `HELP_ENABLED` | `false` | Enable or disable help page |
+
+### Password Generator Configuration
+
+| Env                        | Value | Description                                    |
+| -------------------------- | ----- | ---------------------------------------------- |
+| `PASSWORDGENERATOR_LENGTH` | `30`  | Desired password length (e.g., 30 characters). |
+
 #### Editing Content Files
 
 There are two content files you can edit.
 
-| Name    | Content file path           | URI path   |
-| ------- | --------------------------- | ---------- |
-| Imprint | `static/content/imprint.md` | `/imprint` |
-| Privacy | `static/content/privacy.md` | `/privacy` |
+| Name    | Content file path           | URI path   | Note                              |
+| ------- | --------------------------- | ---------- | --------------------------------- |
+| Imprint | `static/content/imprint.md` | `/imprint` |                                   |
+| Privacy | `static/content/privacy.md` | `/privacy` |                                   |
+| Help    | `static/content/help.md`    | `/help`    | `HELP_ENABLED` needs to be `true` |
 
 ### Authentication Microsoftonline Configuration
 
@@ -180,7 +193,6 @@ Before install the Secretify Outlook Plugin, you need to adjust your configurati
 | `PLUGIN_OUTLOOK_ENABLED`    | Set to `true` to enable the Outlook plugin.                                                                                                                                        |
 | `PLUGIN_OUTLOOK_APPID`      | Generate this app ID only once (e.g., using `uuidgen` or any other GUID generator tool) and reuse it. It needs to be a GUID in the form of `f825c0bf-76eb-4e0c-8038-b46003c9d9ca`. |
 | `PLUGIN_OUTLOOK_APPVERSION` | Set to `1.0.0.0`.                                                                                                                                                                  |
-
 
 ### Storage configuration
 
