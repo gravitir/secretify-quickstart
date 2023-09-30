@@ -133,6 +133,18 @@ You should see the changes reflected in the Secretify interface.
 
 > **_NOTE:_**   If you have made changes to `config/secretiy.yaml` and want to see your changes take effect, you need to run `docker restart secretify-api` instead.
 
+### Generel Configuration
+
+| Env                | Value   | Description                 |
+| ------------------ | ------- | --------------------------- |
+| `LOG_LEVEL`        | `info`  | Logging verbosity level     |
+| `DEBUG`            | `false` | Enable debugging mode       |
+| `ACTIVITY_ENABLED` | `true`  | Enable activity tracking    |
+| `HELP_ENABLED`     | `false` | Enable or disable help page |
+| `META_NAME`        | `""`    | Name metadata               |
+| `META_ADDRESS`     | `""`    | Web URI metadata            |
+| `META_EMAIL`       | `""`    | Email metadta               |
+
 ### Branding Configuration
 
 | Env                      | Value      | Description                                           |
@@ -141,17 +153,6 @@ You should see the changes reflected in the Secretify interface.
 | `BRANDING_PRIMARY_COLOR` | `#079992`  | Primary color                                         |
 | `BRANDING_LOGO`          | `logo.png` | Relative path to the logo file in the `static` folder |
 
-### Help Configuration
-
-| Env            | Value   | Description                 |
-| -------------- | ------- | --------------------------- |
-| `HELP_ENABLED` | `false` | Enable or disable help page |
-
-### Password Generator Configuration
-
-| Env                        | Value | Description                                    |
-| -------------------------- | ----- | ---------------------------------------------- |
-| `PASSWORDGENERATOR_LENGTH` | `30`  | Desired password length (e.g., 30 characters). |
 
 #### Editing Content Files
 
@@ -162,6 +163,12 @@ There are two content files you can edit.
 | Imprint | `static/content/imprint.md` | `/imprint` |                                   |
 | Privacy | `static/content/privacy.md` | `/privacy` |                                   |
 | Help    | `static/content/help.md`    | `/help`    | `HELP_ENABLED` needs to be `true` |
+
+### Password Generator Configuration
+
+| Env                        | Value | Description                                    |
+| -------------------------- | ----- | ---------------------------------------------- |
+| `PASSWORDGENERATOR_LENGTH` | `30`  | Desired password length (e.g., 30 characters). |
 
 ### Authentication Microsoftonline Configuration
 
