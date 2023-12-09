@@ -10,6 +10,8 @@ In this unit you will learn how to install Secretify using Docker.
 
 At the end of this section, you will have a working Secretify instance behind a reverse proxy. The reverse proxy used in this guide is [traefik](https://traefik.io/), but any other preferable option would work fine.
 
+Take a look at the available SDK's [Secretify SDK's](./doc/sdk/README.md).
+
 ## Prerequisites
 
 Before you begin, make sure you have the following tools installed:
