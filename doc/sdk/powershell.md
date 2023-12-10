@@ -19,10 +19,7 @@ $VerbosePreference = 'SilentlyContinue' # `Continue` for debugging else `Silentl
 $DebugPreference = 'Continue' # `Continue` for debugging else `SilentlyContinue`
 
 # Initialize the Secretify instance
-$sify = [Secretify]::new(
-  "https://secretify.localhost/api/v1", # api url
-  "https://secretify.localhost"         # ui url
-)
+$sify = [Secretify]::new("https://secretify.localhost")
 
 # Read ClientSecret securely from the console
 $credential = Get-Credential -Message "Enter your client credentials"
