@@ -6,7 +6,7 @@ Before you start, ensure that you have the following tools installed:
 
 
 * PowerShell 7.0 or higher
-* [Secretify PowerShell Module](https://www.powershellgallery.com/packages/Secretify/1.0) - Install it as a PowerShell Module
+* [Secretify PowerShell Module](https://www.powershellgallery.com/packages/Secretify) - Install it as a PowerShell Module
 
 ## Usage
 
