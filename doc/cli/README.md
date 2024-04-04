@@ -94,7 +94,7 @@ Upon successful creation, you will receive output similar to the following:
 (optional) Use `jq` to parse the link:
 
 ```bash
-secretify create text --set message=v3ryS3ecure$ | jq -r '.error // .link'
+secretify create text --set message=v3ryS3ecure$ | jq -r '.link'
 ```
 
 ### Reveal secret
