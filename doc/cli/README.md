@@ -75,6 +75,16 @@ secretify login https://example.secretify.io/api/v1 -u YOUR_USERNAME
 
 You will be prompted to enter your password. Once authenticated, your credentials will be securely stored. If a keyring is available, your credentials will be saved there; otherwise, they will be stored in a newly created file located at `~/.secretify/.netrc`.
 
+### Logout
+
+To logout, run the following command:
+
+```bash
+secretify logout https://example.secretify.io/api/v1
+```
+
+**Note**: You might encounter an error regarding the keyring. Ignore it for now; what's important is that  `~/.secretify/.netrc` will be removed.
+
 ### Creating a secret
 
 To create a new secret, use the following command:
@@ -97,6 +107,6 @@ Upon successful creation, you will receive output similar to the following:
 secretify create text --set message=v3ryS3ecure$ | jq -r '.link'
 ```
 
-### Reveal secret
+### Revealing a secret
 
 **Note**: This feature is currently under construction and will be available soon.
