@@ -65,6 +65,26 @@ This command should output the version of Secretify installed.
 
 ## Usage
 
+```bash
+dario@quasar:~$ secretify help
+Usage:
+  secretify [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  create      Create a new secret link
+  help        Help about any command
+  login       Login with username and password
+  logout      Log out from a Secretify API
+  reveal      Reveal an entry
+
+Flags:
+  -h, --help      help for secretify
+  -v, --version   version for secretify
+
+Use "secretify [command] --help" for more information about a command.
+```
+
 ### Login
 
 To login, run the following command:
