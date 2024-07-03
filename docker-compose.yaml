@@ -21,7 +21,7 @@ services:
     container_name: secretify-api
     network_mode: bridge # bad design, fixme sometime
     restart: always
-    image: registry.gravitir.io/secretify/secretify-ee-api:v0.8.23-rc28
+    image: registry.gravitir.io/secretify/secretify-ee-api:v0.8.23-rc33
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.secretify-api.rule=Host(`${FQDN}`) && PathPrefix(`/api`)"
@@ -81,7 +81,7 @@ services:
     container_name: secretify-ui
     network_mode: bridge # bad design, fixme sometime
     restart: always
-    image: registry.gravitir.io/secretify/secretify-ee-ui:v0.8.23-rc28
+    image: registry.gravitir.io/secretify/secretify-ee-ui:v0.8.23-rc33
     depends_on:
       - secretify-api
       - traefik
