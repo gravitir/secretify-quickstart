@@ -77,7 +77,7 @@ Next, add a DNS record for your `FQDN` (e.g. `secretify.localhost`) in your DNS 
 
 ### Step 3b: Additonal Configuration for Secure Variant
 
-Set the `SCHEME` to `https://` in the `.env` file. Additionally, make sure to define a valid email address in `POSTMASTER_EMAIL` which used by traefik for issuing Let's Encrypt certificates.
+Set the `SCHEME` to `https://` in the `.env` file. Additionally, make sure to define a valid email address in `POSTMASTER_EMAIL` (Note: `@example.com` won't work) which used by traefik for issuing Let's Encrypt certificates.
 
 ### Step 5: Start the Secretify Instance
 
