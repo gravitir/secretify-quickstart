@@ -35,7 +35,7 @@ If you're using Docker in a local environment, you can proceed with the intended
 As this is a private Docker registry, you will require valid credentials. If you don't have any credentials, please reach out to us at <a href="mailto:hello@secretify.io">hello@secretify.io</a> to request a trial account. Once you have the necessary credentials, proceed to log in to our Docker registry. You will be prompted to enter your password.
 
 ```bash
-docker login registry.gravitir.io -u YOUR_USERNAME
+docker login hub.gravitir.io -u YOUR_USERNAME
 ```
 
 **Verification**
