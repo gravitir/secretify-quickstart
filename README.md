@@ -48,7 +48,7 @@ After you enter the password, you should see the following output:
 Open a terminal session and browse to `secretify-quickstart`. Pull the Docker images defined in `docker-compose.yml`:
 
 ```bash
-docker-compose pull
+docker compose pull
 ```
 
 **Verification**
@@ -86,13 +86,13 @@ To start the Secretify instance, use one of the following commands depending on 
 For the local variant:
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 For the secure variant:
 
 ```
-docker-compose -f docker-compose.secure.yaml up -d
+docker compose -f docker-compose.secure.yaml up -d
 ```
 
 When Secretify starts, the terminal will return the following:  
@@ -122,13 +122,13 @@ Now you can customize various configuration parameters by editing the `.env` fil
 For the local variant:
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 For the secure variant:
 
 ```
-docker-compose -f docker-compose.secure.yaml up -d
+docker compose -f docker-compose.secure.yaml up -d
 ```
 
 You should see the changes reflected in the Secretify interface.
